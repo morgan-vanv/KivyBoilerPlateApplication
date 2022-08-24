@@ -17,7 +17,7 @@ class MyTestCase(unittest.TestCase):
 
     # THIS IS OBVIOUSLY NOT CORRECT, BUT IS LEFT HERE FOR REFERENCE AND USE IN SCOPE TESTING
     #def test_build(self):
-    #    from src.BoilerPlateApplication.main import KivyBoilerPlateApplication
+    #    from src.boilerplate_application.main import KivyBoilerPlateApplication
     #    KivyBoilerPlateApplication.run()
     #    time.sleep(10)
     #    KivyBoilerPlateApplication.stop()
