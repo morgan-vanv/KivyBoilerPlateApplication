@@ -50,7 +50,7 @@ class KivyBoilerPlateApplication(MDApp):
 
         # For Settings & Config
         self.settings_cls = SettingsWithSidebar
-        self.config.read("./src/boilerplate_application/kivyapp_config.ini")
+        self.config.read("./src/main/settings_config.ini")
 
         # Set up Main Layout & Screen Manager
         self.main_layout = FloatLayout()
@@ -73,9 +73,9 @@ class KivyBoilerPlateApplication(MDApp):
 
     # Builds Settings Menu
     def build_settings(self, settings):
-        """Builds setting screen from settings_custom.json and kivyapp_config.ini"""
-        #settings.add_json_panel('Settings Panel 1', self.config, 'settings_custom.json')
-        settings.add_json_panel('Settings Panel 1', self.config, './src/boilerplate_application/settings_custom.json')
+        """Builds setting screen from settings_items.json and settings_config.ini"""
+        #settings.add_json_panel('Settings Panel 1', self.config, 'settings_items.json')
+        settings.add_json_panel('Settings Panel 1', self.config, './src/main/settings_items.json')
 
     # Page Navigation
     def show_screen(self, screen_name):
