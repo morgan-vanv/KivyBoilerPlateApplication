@@ -15,5 +15,5 @@ multipage layout.
 - use base pages to illustrate styling options and what can be done
 - github actions into deployment pipeline? create official releases and other github features as learning opportunity
 - set up branches and other things for for proper and easy development workflow
-
+- set up python logging library
 
