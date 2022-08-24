@@ -4,6 +4,7 @@
 # Imports for Kivy & KivyMD
 from kivymd.app import MDApp
 from kivy.lang import Builder
+from kivy.logger import Logger, LOG_LEVELS
 from kivy.uix.screenmanager import ScreenManager, NoTransition
 #from kivy.properties import *
 from kivy.core.text import LabelBase
@@ -33,7 +34,9 @@ class KivyBoilerPlateApplication(MDApp):
 
     # Initializes Application
     def __init__(self, **kwargs):
-        print("   __init__() executed for App.")
+        Logger.info("   __init__() called.")
+        Logger.info("   ! APPLICATION INITIALIZING !")
+        Logger.setLevel(LOG_LEVELS["info"])     # TODO: add this as a selectable settings option
         super().__init__(**kwargs)  # Really should learn about this and why it is necessary
 
         # Set up Main Layout & Screen Manager
@@ -51,6 +54,8 @@ class KivyBoilerPlateApplication(MDApp):
 
     # Builds Application
     def build(self):
+        Logger.info("   build() called.")
+        Logger.info("   ! APPLICATION BUILDING !")
 
         # Styling Configuration
         self.theme_cls.theme_style = "Dark"     # Theme Color
@@ -73,11 +78,13 @@ class KivyBoilerPlateApplication(MDApp):
     # Builds Settings Menu
     def build_settings(self, settings):
         """Builds setting screen from settings_items.json and settings_config.ini"""
+        Logger.info("   build_settings() called.")
         settings.add_json_panel('Settings Panel 1', self.config, './src/main_app/settings_items.json')
 
     # Page Navigation
     def show_screen(self, screen_name):
         """Passed screen_name, will set screen manager to display that screen"""
+        Logger.info(f"   show_screen({screen_name}) called.")
         try:
             self.screen_manager.current = screen_name
         except RuntimeError:
