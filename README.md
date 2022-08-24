@@ -9,7 +9,7 @@ multipage layout.
 
 ## TODO:
 - fill out README with proper documentation and make it look real good
-- set up proper packaging as well as test cases
+- set up proper packaging as well as test cases (FIX __INIT__.PY ISSUES FOR TESTING & RUNNING AS MAIN)
 - requirements.txt (add to readme as well)
 - set up all configuration options for ease of adjustment later (window size, etc. etc.)
 - use base pages to illustrate styling options and what can be done
