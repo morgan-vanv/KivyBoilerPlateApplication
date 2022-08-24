@@ -63,9 +63,10 @@ class KivyBoilerPlateApplication(MDApp):
         self.main_layout.add_widget(self.screen_manager, 10)  # Adding Screen Manager
 
         # Building and Adding Screens to the Screen Manager
-        self.home_screen = Builder.load_file('screens/HomeScreen.kv')
-        self.second_screen = Builder.load_file('screens/SecondScreen.kv')
-        self.third_screen = Builder.load_file('screens/ThirdScreen.kv')
+        self.home_screen = Builder.load_file('./screens/HomeScreen.kv')   # These import statements need to be fixed
+        self.home_screen = Builder.load_file('./screens/HomeScreen.kv')   # gets messy, use relative imports
+        self.second_screen = Builder.load_file('./screens/SecondScreen.kv')
+        self.third_screen = Builder.load_file('./screens/ThirdScreen.kv')
         self.screen_manager.add_widget(HomeScreen(name='HomeScreen'))
         self.screen_manager.add_widget(SecondScreen(name='SecondScreen'))
         self.screen_manager.add_widget(ThirdScreen(name='ThirdScreen'))
