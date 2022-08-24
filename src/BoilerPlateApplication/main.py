@@ -1,40 +1,43 @@
-# This file is the primary execution point for the Kivy template application
+""" This file is the primary execution point for the Kivy template application """
 #   by Morgan Van V. (2022)
 
 # Imports for Kivy & KivyMD
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, NoTransition
-from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.floatlayout import FloatLayout
 from kivy.properties import *
+from kivy.core.text import LabelBase
 
 # Imports for Styling
 from kivymd.font_definitions import theme_font_styles
-from kivy.core.text import LabelBase
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.floatlayout import FloatLayout
+
+# Imports for Settings Screen
+from kivy.uix.settings import SettingsWithSidebar
 
 # Importing Screens
 from screens.HomeScreen import HomeScreen
 from screens.SecondScreen import SecondScreen
 from screens.ThirdScreen import ThirdScreen
-#from screens import HomeScreen, SecondScreen, ThirdScreen
 
-# Imports for Settings Screen
-from kivy.uix.settings import Settings, SettingsWithSidebar
-from kivy.config import ConfigParser
+
+# from screens import HomeScreen, SecondScreen, ThirdScreen
 
 # Navbar
 class ContentNavigationDrawer(MDBoxLayout):
-    pass
+    """This is for the drawer that pulls out from the left"""
 
 
 #  MAIN CLASS HERE
 class KivyBoilerPlateApplication(MDApp):
+    """This is the main class for the application. Call .run() on this to do the obvious """
+
     # Screens are stored as properties so they are updated dynamically
-    screen_manager = ObjectProperty()
-    home_screen = ObjectProperty()
-    second_screen = ObjectProperty()
-    third_screen = ObjectProperty()
+    screen_manager = ObjectProperty(None)
+    home_screen = ObjectProperty(None)
+    second_screen = ObjectProperty(None)
+    third_screen = ObjectProperty(None)
 
     # Initializes Application
     def __init__(self, **kwargs):
@@ -63,7 +66,7 @@ class KivyBoilerPlateApplication(MDApp):
         self.main_layout.add_widget(self.screen_manager, 10)  # Adding Screen Manager
 
         # Building and Adding Screens to the Screen Manager
-        self.home_screen = Builder.load_file('./screens/HomeScreen.kv')   # These import statements need to be fixed
+        self.home_screen = Builder.load_file('./screens/HomeScreen.kv')   # pay attention to these filepaths
         self.second_screen = Builder.load_file('./screens/SecondScreen.kv')
         self.third_screen = Builder.load_file('./screens/ThirdScreen.kv')
         self.screen_manager.add_widget(HomeScreen(name='HomeScreen'))
@@ -75,7 +78,7 @@ class KivyBoilerPlateApplication(MDApp):
 
     # Builds Settings Menu
     def build_settings(self, settings):
-        print("build_settings() called")
+        """Builds setting screen from settings_custom.json and kivyapp_config.ini"""
         #settings.add_json_panel('Settings Panel 1', self.config, 'settings_custom.json')
         settings.add_json_panel('Settings Panel 1', self.config, './src/BoilerPlateApplication/settings_custom.json')
 
@@ -97,5 +100,4 @@ if __name__ == '__main__':
     KivyBoilerPlateApplication().run()
 
     print("Main Loop Closing...")
-
 
