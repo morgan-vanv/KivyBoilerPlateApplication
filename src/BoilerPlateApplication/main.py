@@ -14,9 +14,9 @@ from kivymd.font_definitions import theme_font_styles
 from kivy.core.text import LabelBase
 
 # Importing Screens
-from screens.HomeScreen import HomeScreen
-from screens.SecondScreen import SecondScreen
-from screens.ThirdScreen import ThirdScreen
+#from screens.HomeScreen import HomeScreen
+#from screens.SecondScreen import SecondScreen
+#from screens.ThirdScreen import ThirdScreen
 from screens import HomeScreen, SecondScreen, ThirdScreen
 
 # Imports for Settings Screen
