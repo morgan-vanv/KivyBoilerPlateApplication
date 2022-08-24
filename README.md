@@ -21,5 +21,16 @@ multipage layout.
 - use base pages to illustrate styling options and what can be done
 - github actions into deployment pipeline? create official releases and other github features as learning opportunity
 - set up branches and other things for for proper and easy development workflow
-- set up python logging library
+- set up python logging !!!!!!
+
+## A Crash Course / Reference on Kivy & KivyMD
+
+Here are some notes for the user, (as well as for my later reference), regarding Kivy and KivyMD
+Consider this a crash course of sorts.
+
+#### Kivy App Lifecycle
+
+      Python start, run() -> build() -> on_start() -> APP FUNCTIONS -> on_stop() -> KIVY WINDOW DESTROYED
+
+   We can also use `on_pause()` and `on_resume()` to do self-explanatory things
 

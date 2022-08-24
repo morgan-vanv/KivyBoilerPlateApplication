@@ -6,7 +6,6 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, NoTransition
 #from kivy.properties import *
-from kivy.properties import ObjectProperty
 from kivy.core.text import LabelBase
 
 # Imports for Styling
@@ -18,12 +17,10 @@ from kivymd.uix.floatlayout import FloatLayout
 from kivy.uix.settings import SettingsWithSidebar
 
 # Importing Screens
-from screens.home_screen import HomeScreen
+from screens.home_screen import home_screen
 from screens.second_screen import second_screen
 from screens.third_screen import third_screen
 
-
-# from screens import HomeScreen, second_screen, third_screen
 
 # Navbar
 class ContentNavigationDrawer(MDBoxLayout):
@@ -32,12 +29,25 @@ class ContentNavigationDrawer(MDBoxLayout):
 
 #  MAIN CLASS HERE
 class KivyBoilerPlateApplication(MDApp):
-    """This is the main class for the application. Call .run() on this to do the obvious """
+    """This is the main_app class for the application. Call .run() on this to do the obvious """
 
     # Initializes Application
     def __init__(self, **kwargs):
         print("   __init__() executed for App.")
         super().__init__(**kwargs)  # Really should learn about this and why it is necessary
+
+        # Set up Main Layout & Screen Manager
+        self.main_layout = FloatLayout()
+        self.nav_bar = Builder.load_file('screens/navbar.kv')
+        self.screen_manager = ScreenManager()
+        self.screen_manager.transition = NoTransition()
+        self.main_layout.add_widget(self.nav_bar, 1)  # Adding Navigation Bar
+        self.main_layout.add_widget(self.screen_manager, 10)  # Adding Screen Manager
+
+        # Building Screens from File
+        self.home_screen = Builder.load_file('screens/home_screen.kv')
+        self.second_screen = Builder.load_file('screens/second_screen.kv')
+        self.third_screen = Builder.load_file('screens/third_screen.kv')
 
     # Builds Application
     def build(self):
@@ -50,32 +60,20 @@ class KivyBoilerPlateApplication(MDApp):
 
         # For Settings & Config
         self.settings_cls = SettingsWithSidebar
-        self.config.read("./src/main/settings_config.ini")
+        self.config.read("./src/main_app/settings_config.ini")
 
-        # Set up Main Layout & Screen Manager
-        self.main_layout = FloatLayout()
-        self.nav_bar = Builder.load_file('screens/navbar.kv')
-        self.screen_manager = ScreenManager()
-        self.screen_manager.transition = NoTransition()
-        self.main_layout.add_widget(self.nav_bar, 1)  # Adding Navigation Bar
-        self.main_layout.add_widget(self.screen_manager, 10)  # Adding Screen Manager
-
-        # Building and Adding Screens to the Screen Manager
-        self.home_screen = Builder.load_file('screens/home_screen.kv')
-        self.second_screen = Builder.load_file('screens/second_screen.kv')
-        self.third_screen = Builder.load_file('screens/third_screen.kv')
-        self.screen_manager.add_widget(HomeScreen(name='HomeScreen'))
+        # Adding Screens to the Screen Manager
+        self.screen_manager.add_widget(home_screen(name='home_screen'))
         self.screen_manager.add_widget(second_screen(name='second_screen'))
         self.screen_manager.add_widget(third_screen(name='third_screen'))
-        self.screen_manager.current = 'HomeScreen'
+        self.screen_manager.current = 'home_screen'
 
         return self.main_layout
 
     # Builds Settings Menu
     def build_settings(self, settings):
         """Builds setting screen from settings_items.json and settings_config.ini"""
-        #settings.add_json_panel('Settings Panel 1', self.config, 'settings_items.json')
-        settings.add_json_panel('Settings Panel 1', self.config, './src/main/settings_items.json')
+        settings.add_json_panel('Settings Panel 1', self.config, './src/main_app/settings_items.json')
 
     # Page Navigation
     def show_screen(self, screen_name):

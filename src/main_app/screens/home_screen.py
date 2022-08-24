@@ -1,14 +1,14 @@
 # THIS IS THE HOMESCREEN CLASS. REFACTORED TO COME OFF MAIN.PY
 """THIS MODULE CONTAINS BEHAVIOR FOR THE HOMESCREEN"""
 
-# Imports for HomeScreen
+# Imports for home_screen
 from kivymd.uix.screen import MDScreen
 
 
-# HomeScreen class definition
-class HomeScreen(MDScreen):
-    """HomeScreen Class. Behavior local to this screen goes here"""
+# home_screen class definition
+class home_screen(MDScreen):
+    """home_screen Class. Behavior local to this screen goes here"""
 
     # De-comment and overload this function if needed
     #def build(self, **kwargs):
-    #    print('HomeScreen.build() executed')
+    #    print('home_screen.build() executed')
