@@ -17,11 +17,9 @@ multipage layout.
 - fill out README with proper documentation and make it look real good
 - set up proper packaging as well as test cases (FIX __INIT__.PY ISSUES FOR TESTING & RUNNING AS MAIN)
 - requirements.txt (add to readme as well)
-- set up all configuration options for ease of adjustment later (window size, etc. etc.)
+- set up all configuration options for ease of adjustment later (window size, logging level. etc.)
 - use base pages to illustrate styling options and what can be done
 - github actions into deployment pipeline? create official releases and other github features as learning opportunity
-- set up branches and other things for for proper and easy development workflow
-- set up python logging !!!!!!
 
 ## A Crash Course / Reference on Kivy & KivyMD
 
