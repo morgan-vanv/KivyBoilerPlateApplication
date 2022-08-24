@@ -87,7 +87,7 @@ class KivyBoilerPlateApplication(MDApp):
         """Passed screen_name, will set screen manager to display that screen"""
         try:
             self.screen_manager.current = screen_name
-        except Exception:
+        except RuntimeError:
             print(f"Error: {screen_name} is not in self.screen_manager!")
 
 
@@ -100,4 +100,3 @@ if __name__ == '__main__':
     KivyBoilerPlateApplication().run()
 
     print("Main Loop Closing...")
-
