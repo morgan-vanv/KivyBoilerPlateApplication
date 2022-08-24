@@ -1,0 +1,16 @@
+[
+    {
+        "type": "path",
+        "title": "Path to ________",
+        "desc": "for finding something",
+        "section": "Settings Panel 1",
+        "key": "item 1"
+    },
+    {
+        "type": "bool",
+        "title": "Random",
+        "desc": "on or off",
+        "section": "Settings Panel 1",
+        "key": "item 2"
+    }
+]

@@ -1,0 +1,62 @@
+MDNavigationLayout:
+
+    ScreenManager:
+        id: screen_manager
+
+        MDScreen:
+
+            MDToolbar:
+                title: "KivyBoilerPlateApplication by Morgan Van V."
+                elevation: 10
+                md_bg_color: app.theme_cls.bg_light
+                pos_hint: {"top": 1}
+                left_action_items:
+                    [['menu', lambda x: nav_drawer.set_state("open")]]
+
+
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        ContentNavigationDrawer:
+            orientation: "vertical"
+            padding: "8dp"
+            spacing: "8dp"
+
+            ScrollView:
+                MDList:
+
+                    OneLineIconListItem:
+                        text: "Home"
+                        on_press:
+                            nav_drawer.set_state("close")
+                            app.show_screen('HomeScreen')
+                        IconLeftWidget:  # Icons on NavDrawer
+                            icon: 'home'
+                            id: icon
+
+                    OneLineIconListItem:
+                        text: "SecondScreen"
+                        on_press:
+                            nav_drawer.set_state("close")
+                            app.show_screen('SecondScreen')
+                        IconLeftWidget:  # Icons on NavDrawer
+                            icon: 'cursor-default'
+                            id: icon
+
+                    OneLineIconListItem:
+                        text: "ThirdScreen"
+                        on_press:
+                            nav_drawer.set_state("close")
+                            app.show_screen('ThirdScreen')
+                        IconLeftWidget:  # Icons on NavDrawer
+                            icon: 'account-multiple'
+                            id: icon
+
+                    OneLineIconListItem:
+                        text: "Settings"
+                        on_press:
+                            nav_drawer.set_state("close")
+                            app.open_settings()
+                        IconLeftWidget:  # Icons on NavDrawer
+                            icon: 'cog'
+                            id: icon
