@@ -17,6 +17,7 @@ from kivy.core.text import LabelBase
 from screens.HomeScreen import HomeScreen
 from screens.SecondScreen import SecondScreen
 from screens.ThirdScreen import ThirdScreen
+from screens import HomeScreen, SecondScreen, ThirdScreen
 
 # Imports for Settings Screen
 from kivy.uix.settings import Settings, SettingsWithSidebar
@@ -51,7 +52,7 @@ class KivyBoilerPlateApplication(MDApp):
 
         # For Settings & Config
         self.settings_cls = SettingsWithSidebar
-        self.config.read("kivyapp_config.ini")
+        self.config.read("./src/BoilerPlateApplication/kivyapp_config.ini")
 
         # Set up Main Layout & Screen Manager
         self.main_layout = FloatLayout()
@@ -75,7 +76,8 @@ class KivyBoilerPlateApplication(MDApp):
     # Builds Settings Menu
     def build_settings(self, settings):
         print("build_settings() called")
-        settings.add_json_panel('Settings Panel 1', self.config, 'settings_custom.json')
+        #settings.add_json_panel('Settings Panel 1', self.config, 'settings_custom.json')
+        settings.add_json_panel('Settings Panel 1', self.config, './src/BoilerPlateApplication/settings_custom.json')
 
     # Page Navigation
     def show_screen(self, screen_name):
