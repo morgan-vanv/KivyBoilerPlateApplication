@@ -7,6 +7,12 @@ prototyping and development
 Add images here to display what this application looks like when built. Basic Kivy & KivyMD Navigation Drawer
 multipage layout.
 
+## How to use:
+1. install dependencies from requirements.txt 
+2. run main.py file found in:
+        
+        ./src/BoilerPlateApplication/main.py
+
 ## TODO:
 - fill out README with proper documentation and make it look real good
 - set up proper packaging as well as test cases (FIX __INIT__.PY ISSUES FOR TESTING & RUNNING AS MAIN)
