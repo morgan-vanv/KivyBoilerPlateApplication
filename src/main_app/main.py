@@ -23,6 +23,17 @@ from screens.second_screen import second_screen
 from screens.third_screen import third_screen
 
 
+# Imports for Twisted Reactor Server
+from server.twisted_listener import LoggingServer, LoggingServerFactory
+from kivy.support import install_twisted_reactor
+# install_twisted_rector must be called before importing and using the reactor
+install_twisted_reactor()
+
+from twisted.internet import reactor
+#from twisted.web import
+from twisted.internet import protocol
+
+
 # Navbar
 class ContentNavigationDrawer(MDBoxLayout):
     """This is for the drawer that pulls out from the left"""
@@ -73,6 +84,10 @@ class KivyBoilerPlateApplication(MDApp):
         self.screen_manager.add_widget(third_screen(name='third_screen'))
         self.screen_manager.current = 'home_screen'
 
+        # Listener for Server that handles POST requests
+        reactor.listenTCP(9420, LoggingServerFactory(self))
+        #reactor.l
+
         return self.main_layout
 
     # Builds Settings Menu
@@ -89,6 +104,14 @@ class KivyBoilerPlateApplication(MDApp):
             self.screen_manager.current = screen_name
         except RuntimeError:
             print(f"Error: {screen_name} is not in self.screen_manager!")
+
+    # Twisted Reactor Server
+    def handle_message(self, msg):
+        """ passed message from twisted reactor listener, and then handles it """
+        print(type(msg))
+        msg = msg.decode('utf-8')
+        #Logger.info("POST Received: %s", msg)
+        print(msg)
 
 
 
