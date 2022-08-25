@@ -7,6 +7,11 @@ prototyping and development
 Add images here to display what this application looks like when built. Basic Kivy & KivyMD Navigation Drawer
 multipage layout.
 
+**Currently Implemented Features:**
+   
+   - Basic Page Navigation using KivyMD (ScreenManager, MDToolbar, & MDNavigationDrawer)
+   - Basic Logging using Kivy Logger class
+
 ## How to use:
 1. install dependencies from requirements.txt 
 2. run main.py file found in:

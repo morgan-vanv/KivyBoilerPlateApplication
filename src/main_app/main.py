@@ -84,7 +84,7 @@ class KivyBoilerPlateApplication(MDApp):
     # Page Navigation
     def show_screen(self, screen_name):
         """Passed screen_name, will set screen manager to display that screen"""
-        Logger.info(f"   show_screen({screen_name}) called.")
+        Logger.info("   show_screen(%s) called.", screen_name)
         try:
             self.screen_manager.current = screen_name
         except RuntimeError:
