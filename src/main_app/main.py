@@ -98,5 +98,6 @@ if __name__ == '__main__':
 
     # CODE GO HERE
     KivyBoilerPlateApplication().run()
+    KivyBoilerPlateApplication().stop()
 
     print("Main Loop Closing...")
