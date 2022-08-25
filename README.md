@@ -90,3 +90,6 @@ Resource management can be a pain if you have multiple paths and projects. Kivy 
 
 ### Kivy Core Abstraction: https://kivy.org/doc/stable/api-kivy.core.html
 This module defines the abstraction layers for our core providers and their implementations. For further information, please refer to Architectural Overview and the Core Providers and Input Providers section of the documentation.
+
+### Event Dispatcher: https://kivy.org/doc/stable/api-kivy.event.html
+### Factory: https://kivy.org/doc/stable/api-kivy.factory.html
