@@ -1,7 +1,10 @@
 # KivyBoilerPlateApplication [TEMPLATE]
 ### by Morgan Van V.
-This repo will store a clean example foundation for a Kivy App that can be easily forked for rapid application
-prototyping and development
+This repository contains a basic Kivy application template for rapid prototyping and development.
+The goal of this is to have a forkable repo that provides a solid, clean foundation for my own future potential projects,
+as well as anyone else who might have interest.
+
+Feel free to open issues, pull requests, provide suggestions, or get in contact.
 
 ## Format / Foundation
 Add images here to display what this application looks like when built. Basic Kivy & KivyMD Navigation Drawer
@@ -10,7 +13,9 @@ multipage layout.
 **Currently Implemented Features:**
    
    - Basic Multi-Page Navigation using KivyMD (ScreenManager, MDToolbar, & MDNavigationDrawer)
+   - Settings Panel for user-defined settings as well as default Kivy settings
    - Basic Logging using Kivy Logger class
+   - Theming from KivyMD as well as an example custom font definition
 
 ## How to use:
 1. install dependencies from requirements.txt 
@@ -20,11 +25,10 @@ multipage layout.
 
 ## TODO:
 1. README always needs updating and prettifying
-2. Configuration & Settings Options (Window Size, Log Level, all user manipulable in Settings Menu)
-3. GitHub Actions & Deployment Pipeline
-4. IMPLEMENT SERVER: https://kivy.org/doc/stable/guide/other-frameworks.html 
+2. GitHub Actions & Deployment Pipeline
+3. IMPLEMENT SERVER: https://kivy.org/doc/stable/guide/other-frameworks.html 
     (twisted reactor? maybe should exist on separate branch considering differing use cases)
-5. Add basic components and styling to each page to show off different functionalities
+4. Add basic Components and styling to each page to show off different functionalities
 
 ## A Crash Course / Reference on Kivy & KivyMD
 
