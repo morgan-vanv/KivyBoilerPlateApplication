@@ -19,13 +19,12 @@ multipage layout.
         ./src/main_app/main.py
 
 ## TODO:
-- README always needs updating and prettifying
-- IMPLEMENT SERVER: https://kivy.org/doc/stable/guide/other-frameworks.html (twisted reactor?)
-- requirements.txt (add to readme as well)
-- set up all configuration options for ease of adjustment later (window size, logging level. etc.)
-- customizable settings page
-- use base pages to illustrate styling options and what can be done
-- github actions into deployment pipeline? create official releases and other github features as learning opportunity
+1. README always needs updating and prettifying
+2. Configuration & Settings Options (Window Size, Log Level, all user manipulable in Settings Menu)
+3. GitHub Actions & Deployment Pipeline
+4. IMPLEMENT SERVER: https://kivy.org/doc/stable/guide/other-frameworks.html 
+    (twisted reactor? maybe should exist on separate branch considering differing use cases)
+5. Add basic components and styling to each page to show off different functionalities
 
 ## A Crash Course / Reference on Kivy & KivyMD
 
