@@ -1,39 +1,24 @@
-""" THIS IS A SCRIPT I ADAPTED FROM THE KIVY & TWISTED ECHO MESSAGING APP"""
-# https://kivy.org/doc/stable/guide/other-frameworks.html
+"""
+http://jcalderone.livejournal.com/49707.html
+http://labs.twistedmatrix.com/2008/02/simple-python-web-server.html
 
-# install_twisted_rector must be called before importing and using the reactor
-from kivy.support import install_twisted_reactor
+usage:
+        $ twistd -y webserver.py
+"""
 
-install_twisted_reactor()
 
-from twisted.internet import reactor
-from twisted.internet import protocol
-from twisted.web.http import Request
-from pprint import pprint
+from twisted.web.resource import Resource
 import json
 
+class SimpleHTTPListener(Resource):
+    isLeaf = True
 
-class LoggingServer(protocol.Protocol):
-    #def render_POST(self, request):
-    #    return request
+    def render_GET(self, request):
+        return ''
 
-    def dataReceived(self, data):
-        response = self.factory.app.handle_message(data)
-        temp = response.content.read()
-        #temp =
-        #temp = json.loads(str(response))
-        #pprint(data)
-        #print(temp)
-        #data = self.transport.getHost()
-        #response_data = self.factory.app.
-        #events = self.connected.rec
-        #print(response_data)
-        if response:
-            self.transport.write(response)
-
-
-class LoggingServerFactory(protocol.Factory):
-    protocol = LoggingServer
-
-    def __init__(self, app):
-        self.app = app
+    def render_POST(self, request):
+        bytes_data = request.content.getvalue()
+        json_data = bytes_data.decode('utf8').replace("'", '"')
+        json_object = json.loads(json_data)
+        print(json_object)
+        return ''

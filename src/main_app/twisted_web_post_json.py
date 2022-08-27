@@ -7,18 +7,10 @@ usage:
 """
 
 
-from pprint import pprint
-from twisted.application.internet import TCPServer
-from twisted.application.service import Application
-#from twisted.web.resource import Resource
-from twisted.web.server import Site
-
-from twisted.web import server
-from twisted.internet import reactor
 from twisted.web.resource import Resource
 import json
 
-class Simple(Resource):
+class SimpleHTTPListener(Resource):
     isLeaf = True
 
     def render_GET(self, request):
@@ -30,16 +22,3 @@ class Simple(Resource):
         json_object = json.loads(json_data)
         print(json_object)
         return ''
-
-
-site = server.Site(Simple())
-reactor.listenTCP(9420, site)
-reactor.run()
-
-
-
-
-#root = Resource()
-##root.putChild(b'form', FormPage())
-#application = Application("My Web Service")
-#TCPServer(8880, Site(root)).setServiceParent(application)

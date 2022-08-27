@@ -24,14 +24,13 @@ from screens.third_screen import third_screen
 
 
 # Imports for Twisted Reactor Server
-from server.twisted_listener import LoggingServer, LoggingServerFactory
+from server.twisted_listener import SimpleHTTPListener
 from kivy.support import install_twisted_reactor
-# install_twisted_rector must be called before importing and using the reactor
-install_twisted_reactor()
 
+install_twisted_reactor() # install_twisted_rector must be called before importing and using the reactor
+
+from twisted.web import server
 from twisted.internet import reactor
-#from twisted.web import
-from twisted.internet import protocol
 
 
 # Navbar
@@ -85,8 +84,9 @@ class KivyBoilerPlateApplication(MDApp):
         self.screen_manager.current = 'home_screen'
 
         # Listener for Server that handles POST requests
-        reactor.listenTCP(9420, LoggingServerFactory(self))
-        #reactor.l
+        site = server.Site(SimpleHTTPListener())
+        reactor.listenTCP(9420, site)
+        #reactor.run()
 
         return self.main_layout
 
