@@ -24,7 +24,7 @@ from screens.third_screen import third_screen
 
 
 # Imports for Twisted Reactor Server
-from server.twisted_listener import SimpleHTTPListener, SimpleHTTPServerFactory
+from server.twisted_listener import SimpleHTTPServerFactory
 from kivy.support import install_twisted_reactor
 
 install_twisted_reactor() # install_twisted_rector must be called before importing and using the reactor
@@ -98,12 +98,14 @@ class KivyBoilerPlateApplication(MDApp):
         #site = server.Site(wrapped)
         #reactor.listenTCP(9420, site)
 
-        site = server.Site(SimpleHTTPListener())
-        #site = server.Site(SimpleHTTPServerFactory(self))
+        #site = server.Site(SimpleHTTPListener())
+        site = server.Site(SimpleHTTPServerFactory(self))
         #resource = SimpleHTTPListener()
         #site = SimpleHTTPServerFactory(self)
         #site.buildProtocol(9420)
 
+        #self.main_listener = reactor.listenTCP(9420, site)
+        #factory = SimpleHTTPServerFactory(self).buildProtocol(SimpleHTTPListener())
         self.main_listener = reactor.listenTCP(9420, site)
         #self.main_listener = reactor.listenTCP(9420, SimpleHTTPServerFactory(self))
 
@@ -129,8 +131,8 @@ class KivyBoilerPlateApplication(MDApp):
         """ passed message from twisted reactor listener, and then handles it """
         print(type(msg))
         #msg = msg.decode('utf-8')
-        #Logger.info("POST Received: %s", msg)
-        print(msg)
+        Logger.info("POST Received: %s", msg)
+        #print(msg)
 
 
 
