@@ -24,12 +24,16 @@ from screens.third_screen import third_screen
 
 
 # Imports for Twisted Reactor Server
-from server.twisted_listener import SimpleHTTPListener
+from server.twisted_listener import SimpleHTTPListener, SimpleHTTPServerFactory
 from kivy.support import install_twisted_reactor
 
 install_twisted_reactor() # install_twisted_rector must be called before importing and using the reactor
 
 from twisted.web import server
+#from twisted.web.http import HTTPFactory
+from twisted.application import service
+from twisted.web.server import GzipEncoderFactory
+from twisted.web.resource import EncodingResourceWrapper
 from twisted.internet import reactor
 
 
@@ -84,9 +88,24 @@ class KivyBoilerPlateApplication(MDApp):
         self.screen_manager.current = 'home_screen'
 
         # Listener for Server that handles POST requests
-        site = server.Site(SimpleHTTPListener())
-        reactor.listenTCP(9420, site)
+        #site = server.Site(SimpleHTTPListener())
+        #self.main_listener = reactor.listenTCP(9420, site)
+        #reactor.connectTCP(9420, site)
         #reactor.run()
+
+        #resource = SimpleHTTPListener()
+        #wrapped = EncodingResourceWrapper(resource, [GzipEncoderFactory()])
+        #site = server.Site(wrapped)
+        #reactor.listenTCP(9420, site)
+
+        site = server.Site(SimpleHTTPListener())
+        #site = server.Site(SimpleHTTPServerFactory(self))
+        #resource = SimpleHTTPListener()
+        #site = SimpleHTTPServerFactory(self)
+        #site.buildProtocol(9420)
+
+        self.main_listener = reactor.listenTCP(9420, site)
+        #self.main_listener = reactor.listenTCP(9420, SimpleHTTPServerFactory(self))
 
         return self.main_layout
 
@@ -109,7 +128,7 @@ class KivyBoilerPlateApplication(MDApp):
     def handle_message(self, msg):
         """ passed message from twisted reactor listener, and then handles it """
         print(type(msg))
-        msg = msg.decode('utf-8')
+        #msg = msg.decode('utf-8')
         #Logger.info("POST Received: %s", msg)
         print(msg)
 

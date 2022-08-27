@@ -8,6 +8,8 @@ usage:
 
 
 from twisted.web.resource import Resource
+from twisted.internet import protocol
+from twisted.web import http
 import json
 
 class SimpleHTTPListener(Resource):
@@ -21,4 +23,16 @@ class SimpleHTTPListener(Resource):
         json_data = bytes_data.decode('utf8').replace("'", '"')
         json_object = json.loads(json_data)
         print(json_object)
+        #response = self.factory.app.handle_message(json_object)
+        #self.
         return ''
+
+class SimpleHTTPServerFactory(http.HTTPFactory):
+    protocol = SimpleHTTPListener
+
+    def __init__(self, app):
+        self.app = app
+
+
+#class SimpleHTTPServerFactory(protocol.Factory)
+
