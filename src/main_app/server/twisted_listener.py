@@ -9,14 +9,25 @@ install_twisted_reactor()
 from twisted.internet import reactor
 from twisted.internet import protocol
 from twisted.web.http import Request
+from pprint import pprint
+import json
 
 
 class LoggingServer(protocol.Protocol):
-    def render_POST(self, request):
-        return request
+    #def render_POST(self, request):
+    #    return request
 
     def dataReceived(self, data):
         response = self.factory.app.handle_message(data)
+        temp = response.content.read()
+        #temp =
+        #temp = json.loads(str(response))
+        #pprint(data)
+        #print(temp)
+        #data = self.transport.getHost()
+        #response_data = self.factory.app.
+        #events = self.connected.rec
+        #print(response_data)
         if response:
             self.transport.write(response)
 

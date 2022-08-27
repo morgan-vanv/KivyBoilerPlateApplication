@@ -62,11 +62,13 @@ class TwistedClientApp(App):
         return layout
 
     def connect_to_server(self):
-        reactor.connectTCP('localhost', 8000, EchoClientFactory(self))
+        reactor.connectUDP('localhost', 8000, EchoClientFactory(self))
+
 
     def on_connection(self, connection):
         self.print_message("Connected successfully!")
         self.connection = connection
+
 
     def send_message(self, *args):
         msg = self.textbox.text
