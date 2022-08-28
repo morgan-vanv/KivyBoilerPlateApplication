@@ -24,12 +24,12 @@ from screens.ThirdScreen import ThirdScreen
 
 
 # Imports for Twisted Reactor Server
+from twisted.web import server
 from server.twisted_listener import SimpleHTTPServerFactory
 from kivy.support import install_twisted_reactor
 
-install_twisted_reactor() # install_twisted_rector must be called before importing and using the reactor
+install_twisted_reactor() # must be called before importing and using the reactor
 
-from twisted.web import server
 from twisted.internet import reactor
 
 
@@ -40,7 +40,7 @@ class ContentNavigationDrawer(MDBoxLayout):
 
 #  MAIN CLASS HERE
 class KivyBoilerPlateApplication(MDApp):
-    """This is the main_app class for the application. Call .run() on this to do the obvious """
+    """ The main_app class for the application. Call .run() on this to do the obvious """
 
     # Initializes Application
     def __init__(self, **kwargs):
