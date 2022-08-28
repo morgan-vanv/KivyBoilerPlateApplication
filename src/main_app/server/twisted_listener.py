@@ -19,12 +19,7 @@ import json
 #        return ''
 #
 #    def render_POST(self, request):
-#        bytes_data = request.content.getvalue()
-#        json_data = bytes_data.decode('utf8').replace("'", '"')
-#        json_object = json.loads(json_data)
-#        print(json_object)
-#        #response = self.factory.app.handle_message(json_object)
-#        #self.
+#        #response = self.factory.app.handle_message(request)
 #        return ''
 
 
@@ -35,11 +30,12 @@ class SimpleHTTPServerFactory(http.HTTPFactory):
     def __init__(self, app):
         self.app = app
 
+    # TODO: add handling of other requests, and mapping based on URL/path in request
     def render(self, request):
         bytes_data = request.content.getvalue()
         json_data = bytes_data.decode('utf8').replace("'", '"')
         json_object = json.loads(json_data)
-        self.app.handle_message(json_data)
+        self.app.handle_message(json_object)
         #print(json_object)
         return ''
 

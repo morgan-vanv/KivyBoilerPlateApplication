@@ -45,7 +45,7 @@ class KivyBoilerPlateApplication(MDApp):
     # Initializes Application
     def __init__(self, **kwargs):
         Logger.info("   ! APPLICATION INITIALIZING !")
-        Logger.setLevel(LOG_LEVELS["info"])     # TODO: add this as a selectable settings option
+        Logger.setLevel(LOG_LEVELS["info"])
         super().__init__(**kwargs)  # Really should learn about this and why it is necessary
 
         # Set up Main Layout & Screen Manager
