@@ -1,14 +1,14 @@
 # THIS IS THE SECONDSCREEN CLASS. REFACTORED TO COME OFF MAIN.PY
 """THIS MODULE CONTAINS BEHAVIOR FOR THE SECONDSCREEN"""
 
-# Imports for second_screen
+# Imports for SecondScreen
 from kivymd.uix.screen import MDScreen
 
 
-# second_screen class definition
-class second_screen(MDScreen):
-    """second_screen Class. Behavior local to this screen goes here"""
+# SecondScreen class definition
+class SecondScreen(MDScreen):
+    """SecondScreen Class. Behavior local to this screen goes here"""
 
     # # De-comment and overload this function if needed
     #def build(self, **kwargs):
-    #    print('second_screen.build() executed')
+    #    print('SecondScreen.build() executed')

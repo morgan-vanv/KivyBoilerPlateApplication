@@ -2,3 +2,4 @@ pip~=20.2.3
 Kivy~=2.1.0
 kivymd~=0.104.2
 pylint
+Twisted
