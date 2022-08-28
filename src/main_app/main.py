@@ -18,9 +18,9 @@ from kivymd.uix.floatlayout import FloatLayout
 from kivy.uix.settings import SettingsWithSidebar
 
 # Importing Screens
-from screens.home_screen import home_screen
-from screens.second_screen import second_screen
-from screens.third_screen import third_screen
+from screens.HomeScreen import HomeScreen
+from screens.SecondScreen import SecondScreen
+from screens.ThirdScreen import ThirdScreen
 
 
 # Imports for Twisted Reactor Server
@@ -30,10 +30,6 @@ from kivy.support import install_twisted_reactor
 install_twisted_reactor() # install_twisted_rector must be called before importing and using the reactor
 
 from twisted.web import server
-#from twisted.web.http import HTTPFactory
-from twisted.application import service
-from twisted.web.server import GzipEncoderFactory
-from twisted.web.resource import EncodingResourceWrapper
 from twisted.internet import reactor
 
 
@@ -48,7 +44,6 @@ class KivyBoilerPlateApplication(MDApp):
 
     # Initializes Application
     def __init__(self, **kwargs):
-        Logger.info("   __init__() called.")
         Logger.info("   ! APPLICATION INITIALIZING !")
         Logger.setLevel(LOG_LEVELS["info"])     # TODO: add this as a selectable settings option
         super().__init__(**kwargs)  # Really should learn about this and why it is necessary
@@ -62,13 +57,12 @@ class KivyBoilerPlateApplication(MDApp):
         self.main_layout.add_widget(self.screen_manager, 10)  # Adding Screen Manager
 
         # Building Screens from File
-        self.home_screen = Builder.load_file('screens/home_screen.kv')
-        self.second_screen = Builder.load_file('screens/second_screen.kv')
-        self.third_screen = Builder.load_file('screens/third_screen.kv')
+        self.home_screen = Builder.load_file('screens/HomeScreen.kv')
+        self.second_screen = Builder.load_file('screens/SecondScreen.kv')
+        self.third_screen = Builder.load_file('screens/ThirdScreen.kv')
 
     # Builds Application
     def build(self):
-        Logger.info("   build() called.")
         Logger.info("   ! APPLICATION BUILDING !")
 
         # Styling Configuration
@@ -82,32 +76,15 @@ class KivyBoilerPlateApplication(MDApp):
         self.config.read("./src/main_app/settings_config.ini")
 
         # Adding Screens to the Screen Manager
-        self.screen_manager.add_widget(home_screen(name='home_screen'))
-        self.screen_manager.add_widget(second_screen(name='second_screen'))
-        self.screen_manager.add_widget(third_screen(name='third_screen'))
-        self.screen_manager.current = 'home_screen'
+        self.screen_manager.add_widget(HomeScreen(name='HomeScreen'))
+        self.screen_manager.add_widget(SecondScreen(name='SecondScreen'))
+        self.screen_manager.add_widget(ThirdScreen(name='ThirdScreen'))
+        self.screen_manager.current = 'HomeScreen'
 
-        # Listener for Server that handles POST requests
-        #site = server.Site(SimpleHTTPListener())
-        #self.main_listener = reactor.listenTCP(9420, site)
-        #reactor.connectTCP(9420, site)
-        #reactor.run()
-
-        #resource = SimpleHTTPListener()
-        #wrapped = EncodingResourceWrapper(resource, [GzipEncoderFactory()])
-        #site = server.Site(wrapped)
-        #reactor.listenTCP(9420, site)
-
+        # Listener for Server that handles HTTP requests
         #site = server.Site(SimpleHTTPListener())
         site = server.Site(SimpleHTTPServerFactory(self))
-        #resource = SimpleHTTPListener()
-        #site = SimpleHTTPServerFactory(self)
-        #site.buildProtocol(9420)
-
-        #self.main_listener = reactor.listenTCP(9420, site)
-        #factory = SimpleHTTPServerFactory(self).buildProtocol(SimpleHTTPListener())
         self.main_listener = reactor.listenTCP(9420, site)
-        #self.main_listener = reactor.listenTCP(9420, SimpleHTTPServerFactory(self))
 
         return self.main_layout
 
@@ -119,21 +96,18 @@ class KivyBoilerPlateApplication(MDApp):
 
     # Page Navigation
     def show_screen(self, screen_name):
-        """Passed screen_name, will set screen manager to display that screen"""
+        """Passed screen_name, sets screen manager to display that screen"""
         Logger.info("   show_screen(%s) called.", screen_name)
         try:
             self.screen_manager.current = screen_name
         except RuntimeError:
             print(f"Error: {screen_name} is not in self.screen_manager!")
 
-    # Twisted Reactor Server
+    # Twisted Reactor Server for Handling HTTP Requests
     def handle_message(self, msg):
-        """ passed message from twisted reactor listener, and then handles it """
-        print(type(msg))
-        #msg = msg.decode('utf-8')
+        """ passed message from twisted reactor listener, then handles it """
         Logger.info("POST Received: %s", msg)
         #print(msg)
-
 
 
 # MAIN EXECUTION LOOP
