@@ -1,16 +1,22 @@
 # KivyBoilerPlateApplication [TEMPLATE]
 ### by Morgan Van V.
-This repo will store a clean example foundation for a Kivy App that can be easily forked for rapid application
-prototyping and development
+This repository contains a basic Kivy application template for rapid prototyping and development.
+The goal of this is to have a fork-able repo that provides a solid, clean foundation for my own future potential projects,
+as well as anyone else who might have interest.
+
+Feel free to open issues, pull requests, provide suggestions, or get in contact.
 
 ## Format / Foundation
 Add images here to display what this application looks like when built. Basic Kivy & KivyMD Navigation Drawer
-multipage layout.
+multi-page layout.
 
 **Currently Implemented Features:**
    
    - Basic Multi-Page Navigation using KivyMD (ScreenManager, MDToolbar, & MDNavigationDrawer)
+   - Settings Panel for user-defined settings as well as default Kivy settings
    - Basic Logging using Kivy Logger class
+   - Theming from KivyMD as well as an example custom font definition
+   - A twisted server running inside the event loop that logs all POST requests (default_port: 9420)
 
 ## How to use:
 1. install dependencies from requirements.txt 
@@ -19,13 +25,11 @@ multipage layout.
         ./src/main_app/main.py
 
 ## TODO:
-- README always needs updating and prettifying
-- IMPLEMENT SERVER: https://kivy.org/doc/stable/guide/other-frameworks.html (twisted reactor?)
-- requirements.txt (add to readme as well)
-- set up all configuration options for ease of adjustment later (window size, logging level. etc.)
-- customizable settings page
-- use base pages to illustrate styling options and what can be done
-- github actions into deployment pipeline? create official releases and other github features as learning opportunity
+1. README always needs updating and prettifying
+2. GitHub Actions & Deployment Pipeline
+3. Resolve warning regarding pages being loaded multiple times
+4. Add basic Components and styling to each page to show off different functionalities
+5. Implement basic testing framework
 
 ## A Crash Course / Reference on Kivy & KivyMD
 
@@ -37,11 +41,6 @@ _**Full Documentation PDF**: https://buildmedia.readthedocs.org/media/pdf/kivy/l
 _**Kivy Website Documentation**: https://kivy.org/doc/stable/_
 
 _**KivyMD Website Documentation**: https://kivymd.readthedocs.io/en/latest/_
-
-### Kivy App Architecture
-
-![img.png](src/main_app/static_assets/kivy_architecture.png)
-_https://kivy.org/doc/stable/guide/architecture.html_
 
 ### Kivy App Lifecycle
 
@@ -65,7 +64,7 @@ The Config object is an instance of a modified Python ConfigParser. See the Conf
 Kivy has a configuration file which determines the default settings. In order to change these settings, you can alter this file manually or use the Config object. Please see the Configure Kivy section for more information.
 
 ### Kivy Factory: https://kivy.org/doc/stable/api-kivy.factory.html
-_The factory can be used to automatically register any class or module and instantiate classes from it anywhere in your project._
+The factory can be used to automatically register any class or module and instantiate classes from it anywhere in your project.
 
 ### Kivy Base: https://kivy.org/doc/stable/api-kivy.base.html
 This module contains the Kivy core functionality and is not intended for end users. Feel free to look through it, but bare in mind that calling any of these methods directly may result in an unpredictable behavior as the calls access directly the event loop of an application.
@@ -87,3 +86,6 @@ Resource management can be a pain if you have multiple paths and projects. Kivy 
 
 ### Kivy Core Abstraction: https://kivy.org/doc/stable/api-kivy.core.html
 This module defines the abstraction layers for our core providers and their implementations. For further information, please refer to Architectural Overview and the Core Providers and Input Providers section of the documentation.
+
+### Event Dispatcher: https://kivy.org/doc/stable/api-kivy.event.html
+### Factory: https://kivy.org/doc/stable/api-kivy.factory.html

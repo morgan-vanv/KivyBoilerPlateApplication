@@ -1,8 +1,9 @@
 """THIS FILE IS FOR UNIT TESTING OF THE APPLICATION TO ENSURE FUNCTIONALITY"""
 
 #
-#   TODO: REFACTOR ALL TESTING. KIVY TESTING IS DONE IN AN ENTIRELY DIFFERENT WAY THAN ANTICIPATED
-#       I WOULD READ THE DOCS AND FIX THIS BUT THE WEBSITE IS DOWN SO THIS MUST BE RETURNED TO
+#   TODO: IMPLEMENT TESTING.
+#       KIVY, TWISTED, whatever else can be tested.
+#       (this might be tricky due to the lack of functionality in this application)
 #
 # REFER TO: https://kivy.org/doc/stable/contribute-unittest.html
 
